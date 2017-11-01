@@ -62,6 +62,8 @@
     self.testTable.tableHeaderView=_searchController.searchBar;
 }
 -(void)configureView:(NSArray *)arr{
+    UIBarButtonItem *rightItem=[[UIBarButtonItem alloc]initWithTitle:@"js交互测试" style:UIBarButtonItemStylePlain target:self action:@selector(rightBarClick:)];
+    self.navigationItem.rightBarButtonItem=rightItem;
     NSMutableArray *nsmuArr=[NSMutableArray array];
     for (int i=0; i<arr.count; i++) {
         TableModel *model=[TableModel new];
@@ -311,15 +313,20 @@
     cell.selectionStyle=UITableViewCellSelectionStyleNone;
     return cell;
 }
-#pragma mark--tap click
+#pragma mark-- click
+-(void)rightBarClick:(UIBarButtonItem*)item{
+    webView *vc=[webView new];
+    vc.title=@"test";
+    [self.navigationController pushViewController:vc animated:YES];
+}
 -(void)scrollLideView:(UIButton *)sender {
-    if(sender.tag==1){
+   /* if(sender.tag==1){
         webView *vc=[webView new];
         vc.title=@"test";
         [self.navigationController pushViewController:vc animated:YES];
         return;
         
-    }
+    }*/
     if(self.selectIndex==-1){   //第一次进入页面
         self.selectIndex=sender.tag;
         self.isopen=YES;

@@ -1,7 +1,34 @@
-
-<html>
-    <!-- JiaThis Button BEGIN -->
-    <div class="jiathis_style_m"></div>
-    <script type="text/javascript" src="http://v3.jiathis.com/code/jiathis_m.js" charset="utf-8"></script>
-    <!-- JiaThis Button END -->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+            <title>Title</title>
+    </head>
+    <body>
+        <button onclick="test1()"></button>
+        <button onclick="test2()"></button>
+        <button onclick="test3()"></button>
+        <button onclick="test4()"></button>
+        <div id=mobile></div>
+        <script>
+        //OC调用js的方法列表
+        function test1(msg) {
+                document.getElementById('mobile').innerHTML = '111'+msg//这里可以传参
+            }
+        function test2() {
+            window.webkit.messageHandlers.showUserInfo.postMessage(['110','name','china','stuid','code'])
+        }
+        //js调用OC方法列表
+        function test3() {
+            window.webkit.messageHandlers.showMobile.postMessage(null)//postMessage()括号内若无参数，则为null，若不传则不响应
+        }
+        function test4() {
+            window.webkit.messageHandlers.getName.postMessage('name')
+        }
+        if(window.webkit.messageHandlers){
+            test3();
+        }
+        </script>
+    </body>
 </html>
+

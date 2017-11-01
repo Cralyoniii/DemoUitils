@@ -12,7 +12,7 @@
 
 #endif /* webView_h */
 #import<UIKit/UIKit.h>
-#import <WebKit/WebKit.h>
+
 @interface webView:UIViewController
 @end
 
